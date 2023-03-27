@@ -12,5 +12,6 @@ Probably will not do and only do it if we finish the project early.
 
 Main Computational Task for Final Project: 
 Creating a server and client to communicate between to give/answer questions.
-Obviously have questions that we make with answers
+Obviously have questions that we make with answers.
 After the communication works, we can count the number of questions and give points according to difficulty
+.
