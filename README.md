@@ -1,5 +1,5 @@
 # cs32-final-project
-My CS32 final project with Angel. 
+My CS32 final project with Angel You and Melanie Volz. 
 Dream Project: How can we create a trivia game?
 
 Subtasks:
