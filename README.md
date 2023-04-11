@@ -28,20 +28,8 @@ Some current unknowns for our project is how exactly to use Streamlit and Flask 
 
 Some examples of our code is:
 
-import csv
-import random
-import streamlit as st
+<img width="583" alt="Screen Shot 2023-04-10 at 9 47 38 PM" src="https://user-images.githubusercontent.com/130410836/231034254-9876136c-c86e-4303-862d-833230ed09ce.png">
 
-with open(questions.csv) as q:
-  readq = csv.reader(q)
-  chosen_question = random.choice(list(readq))
-  print(chosen_question)
-  
-  #this will hopefully print out a chosen question from our CSV file
-
-with open(answers.csv) as a:
-.....
-  answerchoices = st.radio(...) #using the radio widget to make the choice and then
  
  We are still working on the logistics of the project and the coding and figuring out how to use streamlit to make the appearance of our trivia game look pleasing.
 
