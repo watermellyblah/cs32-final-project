@@ -33,4 +33,8 @@ Some examples of our code is:
  
  We are still working on the logistics of the project and the coding and figuring out how to use streamlit to make the appearance of our trivia game look pleasing.
 
-
+The steps we need to take to make this FP possible:
+1. We need to figure out how to import streamlit and using the features of it to output in the appface
+2. We need to see how we can use a key within a dictionary to find the answer choices to the questions and then print out the corresponding answer choices to the randomly selected quesiton.
+3. We also need to have different CSV files with different genres, and then have the player be asked to input and using the "radio" widget in Streamlit to pick the topic which pickes the CSV file.
+4. Then we need to make sure that the code will not pick the same question, so we need to somehow take it away from the ones we can choose.
