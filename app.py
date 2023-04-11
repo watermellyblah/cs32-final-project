@@ -1,10 +1,14 @@
-# save this as app.py
-from flask import Flask, request
-from markupsafe import escape
+import csv
+import random
+import streamlit as st
 
-app = Flask(__name__)
+with open(questions.csv) as q:
+  readq = csv.reader(q)
+  chosen_question = random.choice(list(readq))
+  print(chosen_question)
+  
+  #this will hopefully print out a chosen question from our CSV file
 
-@app.route('/')
-def hello():
-    name = request.args.get("name", "World")
-    return f'Hello, {escape(name)}!'
+with open(answers.csv) as a:
+#.....
+  #answerchoices = st.radio(...) #using the radio widget to make the choice and then
