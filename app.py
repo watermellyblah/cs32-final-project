@@ -14,6 +14,10 @@ import streamlit as st
 #show the the result/the correct answer
   #somehow let the computer know the right answer choice
 #add points to the system
+points = 0
+for #something:
+  if #user answer# == questions[question][-1]
+  
   #probably need to use a counter of some sort that adds points and use something to print the counter
 #at the end of the game show the number of points recieved
 with open(questions.csv) as q:
