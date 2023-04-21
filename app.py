@@ -2,9 +2,28 @@ import csv
 import random
 import streamlit as st
 
-#def choose_topic():
-  #this function ask for the input of the player to pick a topic
+#this ask for the input of the player to pick a topic
+def game_time():
   
+
+
+def main():
+  print('Welcome to Trivia! Pick your category:')
+  while true:
+    topic_option = st. selectbox('Category',('Art History','Harvard', 'Sports'))
+    st.write('You selected:', topic_option)
+      if topic_option == 'Art History':
+        open(art_questions.csv) 
+        open(art_answers.csv)
+      if topic_option == 'Harvard':
+        open(harvard_questions.csv)
+        open(harvard_answers.csv)
+      else:
+        open(sports_questions.csv)
+        open(sports_answers.csv)
+  return main()
+          
+          #open sportsadfdhaoif
 #with what ever topic they choose open the file of that topic
   #use a streamlit function with the different buttons to choose from 
 #using the dictionary key, show a question and the answer choices
