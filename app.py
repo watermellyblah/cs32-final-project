@@ -3,9 +3,8 @@ import random
 import streamlit as st
 
 #this ask for the input of the player to pick a topic
-def game_time():
+#def game_time():
   
-
 
 def main():
   print('Welcome to Trivia! Pick your category:')
@@ -15,12 +14,16 @@ def main():
       if topic_option == 'Art History':
         open(art_questions.csv) 
         open(art_answers.csv)
+        #need to create a new function
       if topic_option == 'Harvard':
         open(harvard_questions.csv)
         open(harvard_answers.csv)
+        #need to create a new function
       else:
         open(sports_questions.csv)
         open(sports_answers.csv)
+        #need to create a new function
+  
   return main()
           
           #open sportsadfdhaoif
