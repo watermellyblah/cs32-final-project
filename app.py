@@ -7,7 +7,7 @@ import streamlit as st
   
 
 def main():
-  print('Welcome to Trivia! Pick your category:')
+  st.print('Welcome to Trivia! Pick your category:')
   while true:
     topic_option = st.selectbox('Category',('Art History','Harvard', 'Sports'))
     st.write('You selected:', topic_option)
@@ -36,19 +36,19 @@ def main():
 #show the the result/the correct answer
   #somehow let the computer know the right answer choice
 #add points to the system
-points = 0
-for #something:
-  if #user answer# == questions[question][-1]
+#points = 0
+#for #something:
+  #if #user answer# == questions[question][-1]
   
   #probably need to use a counter of some sort that adds points and use something to print the counter
 #at the end of the game show the number of points recieved
-with open(questions.csv) as q:
-  readq = csv.reader(q)
-  chosen_question = random.choice(list(readq))
-  print(chosen_question)
+#with open(questions.csv) as q:
+  #readq = csv.reader(q)
+  #chosen_question = random.choice(list(readq))
+  #print(chosen_question)
   
   #this will hopefully print out a chosen question from our CSV file
 
-with open(answers.csv) as a:
+#with open(answers.csv) as a:
 #.....
   #answerchoices = st.radio(...) #using the radio widget to make the choice and then
