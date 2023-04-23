@@ -17,7 +17,7 @@ st.write('You selected:', topic_option)
 if topic_option == 'Art History':
    open(art_questions.csv) 
    open(art_answers.csv)
-   print(art_answers.csv)
+   st.write(art_answers.csv)
         #need to create a new function
 if topic_option == 'Harvard':
    open(harvard_questions.csv)
