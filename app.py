@@ -3,7 +3,7 @@ import random
 import streamlit as st
 
 #this ask for the input of the player to pick a topic
-def game_time():
+#def game_time():
   #need to print one question at a time from the list
   #need to use the radio button feature of streamlit
   #after pick answer, need to match answer into the answers csv
