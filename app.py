@@ -3,25 +3,28 @@ import random
 import streamlit as st
 
 #this ask for the input of the player to pick a topic
-#def game_time():
+def game_time():
+  #need to print one question at a time from the list
+  #need to use the radio button feature of streamlit
+  #after pick answer, need to match answer into the answers csv
   
 
 #def main():
 st.write('Welcome to Trivia! Pick your category:')
-  #while true:
-topic_option = st.selectbox('Category',('Art History','Harvard', 'Sports'))
-st.write('You selected:', topic_option)
-    #if topic_option == 'Art History':
-      #open(art_questions.csv) 
-      #open(art_answers.csv)
+while true:
+  topic_option = st.selectbox('Category',('Art History','Harvard', 'Sports'))
+  st.write('You selected:', topic_option)
+  if topic_option == 'Art History':
+     open(art_questions.csv) 
+     open(art_answers.csv)
         #need to create a new function
-    #if topic_option == 'Harvard':
-      #open(harvard_questions.csv)
-      #open(harvard_answers.csv)
+  if topic_option == 'Harvard':
+     open(harvard_questions.csv)
+     open(harvard_answers.csv)
         #need to create a new function
-    #else:
-      #open(sports_questions.csv)
-      #open(sports_answers.csv)
+  else:
+     open(sports_questions.csv)
+     open(sports_answers.csv)
         #need to create a new function
   
   #return main()
