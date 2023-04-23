@@ -12,7 +12,7 @@ import streamlit as st
 #def main():
 st.write('Welcome to Trivia! Pick your category:')
 #while true:
-topic_option = st.selectbox('Category',('Art History','Harvard', 'Sports'))
+topic_option = st.selectbox('Category',('Pick a Category','Art History','Harvard', 'Sports'))
 st.write('You selected:', topic_option)
 if topic_option == 'Art History':
    open(art_questions.csv) 
