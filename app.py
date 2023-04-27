@@ -3,7 +3,7 @@ import random
 import streamlit as st
 import pandas as pd
 
-category_files = {"Art History": ("art_questions.csv", "art_answers.csv"), "Harvard": ("harvard_questions.csv", "harvard_answers.csv"), "Sports": ("sports_questions.csv", "sports_answers.csv")
+category_files = {"Art History": ("art_questions.csv", "art_answers.csv"), "Harvard": ("harvard_questions.csv", "harvard_answers.csv"), "Sports": ("sports_questions.csv", "sports_answers.csv")}
 
 #this ask for the input of the player to pick a topic
 #def game_time():
