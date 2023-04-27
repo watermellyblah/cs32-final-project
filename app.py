@@ -3,7 +3,10 @@ import random
 import streamlit as st
 import pandas as pd
 
-category_files = {"Art History": ("path/to/art_questions.csv", "path/to/art_answers.csv"), "Harvard": ("path/to/harvard_questions.csv", "path/to/harvard_answers.csv"), "Sports": ("path/to/sports_questions.csv", "path/to/sports_answers.csv")}
+category_files = {"Art History": ("https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/art_questions.csv", "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/art_answers.csv"), 
+		  "Harvard": ("https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/harvard_questions.csv", "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/harvard_answers.csv"), 
+		  "Sports": ("https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/sports_questions.csv", "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/sports_answers.csv")
+		 }
 
 #this ask for the input of the player to pick a topic
 #def game_time():
@@ -14,9 +17,9 @@ category_files = {"Art History": ("path/to/art_questions.csv", "path/to/art_answ
 #st.write('You selected:', topic_option)
 
 categories = {} #Create an empty dictionary
-for category, (questions_file, answers_file) in category_files.items():
-	questions_df = pd.read_csv(questions_file)
-	answers_df = pd.read_csv(answers_file)
+for category, (questions_url, answers_url) in category_files.items():
+	questions_df = pd.read_csv(questions_url)
+	answers_df = pd.read_csv(answers_url)
 	questions = questions_df["question"].tolist()
 	answers = answers_df["answer"].tolist()
 	categories[category] = [{"question": q, "answer": a} for q, a in zip(questions, answers)]
