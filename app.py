@@ -37,7 +37,7 @@ def ask_questions(category_files):
 	questions_df, answers_df = load_data(category_files)
 	questions_df = randomzie_data(questions_df)
 	score = 0
-	for im row in questions_df.iterrows():
+	for i, row in questions_df.iterrows():
 		st.write(f"Question {i+1}: {row['Questions']}")
 		choices = [
 			row["A"],
