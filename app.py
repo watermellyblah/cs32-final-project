@@ -3,9 +3,9 @@ import random
 import streamlit as st
 import pandas as pd
 
-category_files = {"Art History": ("https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/art_questions.csv", "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/art_answers.csv"), 
-		  "Harvard": ("https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/harvard_questions.csv", "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/harvard_answers.csv"), 
-		  "Sports": ("https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/sports_questions.csv", "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/sports_answers.csv")
+category_files = {"Art History": {"questions_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/art_questions.csv", "answers_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/art_answers.csv"}, 
+		  "Harvard": {"questions_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/harvard_questions.csv", "answers_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/harvard_answers.csv"}, 
+		  "Sports": {"questions_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/sports_questions.csv", "answers_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/sports_answers.csv"}
 		 }
 
 #this ask for the input of the player to pick a topic
@@ -16,20 +16,21 @@ category_files = {"Art History": ("https://github.com/watermellyblah/cs32-final-
 
 #st.write('You selected:', topic_option)
 
-categories = {} #Create an empty dictionary
-for category, (questions_url, answers_url) in category_files.items():
-	questions_df = pd.read_csv(questions_url)
-	answers_df = pd.read_csv(answers_url)
-	questions = questions_df["question"].tolist()
-	answers = answers_df["answer"].tolist()
-	categories[category] = [{"question": q, "answer": a} for q, a in zip(questions, answers)]
-									
+questions_df = pd.read_csv(questions_url)
+category_questions_df = questions_df.loc[questions_df['Category'] == selected_category]
+category_questions_df = category_questions_df.sample(frac=1).reset_index(drop=True)
+
 #ask for the user to choose a category and display a random question from the selected category
 st.write('Welcome to Trivia! Pick your category:')
 #while true:
 category = st.selectbox('Category', list(categories.keys()))
 question = random.choice(categories[category])
 st.write(question["question"])
+
+answers_df = pd.read_csv(answers_url)
+category_answers_df = answers_df.loc[answers_df['Category'] == selected_category]
+correct_answers = dict(zip(category_answers_df['Question'], category_answers_df['Answer']))
+
 
 #ask for user's answer and chheck if it's correct or not
 user_answer = st.text_input("Your Answer:")
