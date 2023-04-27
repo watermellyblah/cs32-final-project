@@ -1,6 +1,7 @@
 import csv
 import random
 import streamlit as st
+import pandas as pd
 
 #this ask for the input of the player to pick a topic
 #def game_time():
@@ -15,17 +16,13 @@ st.write('Welcome to Trivia! Pick your category:')
 topic_option = st.selectbox('Category',('Pick a Category','Art History','Harvard', 'Sports'))
 st.write('You selected:', topic_option)
 if topic_option == 'Art History':
-   open(art_questions.csv) 
-   open(art_answers.csv)
-   st.write(art_answers.csv)
+   pd.read_csv("art_questions.csv") 
         #need to create a new function
 if topic_option == 'Harvard':
-   open(harvard_questions.csv)
-   open(harvard_answers.csv)
+  pd.read_csv("harvard_questions.csv") 
         #need to create a new function
 else:
-   open(sports_questions.csv)
-   open(sports_answers.csv)
+   pd.read_csv("sports_questions.csv") 
         #need to create a new function
   
   #return main()
