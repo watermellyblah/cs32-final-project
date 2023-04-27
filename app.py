@@ -56,7 +56,7 @@ def ask_questions(category):
 			st.write(f"Incorrect. The answer is {answers_df.iloc[i, 0].strip().lower()}")
 	st.write(f"You scored {score}/{len(questions_df)}")
 
-define streamlit app
+#define streamlit app
 def main():
 	st.title("Trivia Game")
 	category = st.selectbox("Select a category:", list(category_files.keys()))
