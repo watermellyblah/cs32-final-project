@@ -59,8 +59,8 @@ def ask_questions(category_files):
 #define streamlit app
 def main():
     st.title("Trivia Game")
-    category = st.selectbox("Select a category:", list(categories.keys()))
-    ask_questions(category)
+    category = st.selectbox("Select a category:", list(category_files.keys()))
+    ask_questions(category_files)
 
 if __name__ == "__main__":
     main()
