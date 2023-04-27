@@ -50,7 +50,7 @@ def ask_questions(category_files):
 			st.write(f"{chr(ord('A')+j)}. {choice}")
 		user_answer = st.text_input("Your answer:")
 		if user_answer.strip().lower() == answers_df.iloc[i, 0].strip().lower():
-			st.write("Correct!"
+			st.write("Correct!")
 			score += 1
 		else:
 			st.write(f"Incorrect. The answer is {answers_df.iloc[i, 0].strip().lower()}")
