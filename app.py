@@ -16,30 +16,44 @@ category_files = {"Art History": {"questions_url": "https://github.com/watermell
 
 #st.write('You selected:', topic_option)
 
-pd.read_csv("https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/art_questions.csv") 
+#define function to randomzie answer choices
+def random_answers(row):
+	answers = row.iloc[1:].tolist()
+	random.shuffle(answers)
+	return pd.Series(answers)
 
-questions_df = pd.read_csv(questions_url)
-category_questions_df = questions_df.loc[questions_df['Category'] == selected_category]
-category_questions_df = category_questions_df.sample(frac=1).reset_index(drop=True)
+#define function to check user's answer
+def check_answer(user_answer, answer_key):
+	if user_answer.lower() == answer_key.lower():
+		return True
+	else:
+		return False
 
-#ask for the user to choose a category and display a random question from the selected category
 st.write('Welcome to Trivia! Pick your category:')
-#while true:
-category = st.selectbox('Category', list(categories.keys()))
-question = random.choice(categories[category])
-st.write(question["question"])
+category = st.sidebar.selectbox('Select a Category', list(categories_dict.keys()))
 
-answers_df = pd.read_csv(answers_url)
-category_answers_df = answers_df.loc[answers_df['Category'] == selected_category]
-correct_answers = dict(zip(category_answers_df['Question'], category_answers_df['Answer']))
+# load questions and answers
+questions_url = category_dict[category]["question_url"]
+answers_url = category_dict[category]["answer_url"]
+questions_df = pd.read_csv(questions_url)
+answers_df = pd.read_csv(answers_url, header=None)
+
+#randomize the order of questions and answers
+questions_df = questions_df.sample(frac=1).reset_index(drop=True)
+questions_df.iloc[:,1:] = questions_df.iloc[:, 1:].apply(random_answers, axis=1)
+
+#Loop through questions and have user answer each one
+number_correct = 0
+for i, in row in questions_df.interrows():
+	st.write(f"Question {i+1}: {row['Questions]}")
+	st.write("Answer choices:")
+    	st.write("A. " + row.iloc[1])
+    	st.write("B. " + row.iloc[2])
+   	st.write("C. " + row.iloc[3])
+    	st.write("D. " + row.iloc[4])
 
 
-#ask for user's answer and chheck if it's correct or not
-user_answer = st.text_input("Your Answer:")
-if user_answer.lower() == question["answer"].lower():
-	st.write("You are correct!")
-else:
-	st.write(f"You are incorrect! The correct answer is {question['answer']}.")
+
 
 #st.write('Welcome to Trivia! Pick your category:')
 #while true:
