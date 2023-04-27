@@ -7,7 +7,7 @@ category_files = {"Art History": {"questions_url": "https://github.com/watermell
 		 "Harvard": {"questions_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/harvard_questions.csv", "answers_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/harvard_answers.csv"}, 
 		 "Sports": {"questions_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/sports_questions.csv", "answers_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/sports_answers.csv"}
 		 }
-
+print(category_files)
 #this ask for the input of the player to pick a topic
 #def game_time():
   #need to print one question at a time from the list
