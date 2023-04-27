@@ -9,14 +9,13 @@ category_files = {"Art History": {"questions_url": "https://github.com/watermell
 		 }
 
 #this ask for the input of the player to pick a topic
-#def game_time():
   #need to print one question at a time from the list
   #need to use the radio button feature of streamlit
   #after pick answer, need to match answer into the answers csv
 
 #st.write('You selected:', topic_option)
 
-#define fucntion to load questions and answers
+#define fucntion to load questions and answers using pandas
 def load_data(category):
 	questions_url = category_files[category]["questions_url"]
 	answers_url = category_files[category]["answers_url"]
@@ -48,6 +47,7 @@ def ask_questions(category):
 		random.shuffle(choices)
 		for j, choice in enumerate(choices):
 			st.write(f"{chr(ord('A')+j)}. {choice}")
+			
 		user_answer = st.text_input("Your answer:")
 		if user_answer.strip().lower() == answers_df.iloc[i, 0].strip().lower():
 			st.write("Correct!")
@@ -55,7 +55,8 @@ def ask_questions(category):
 		else:
 			st.write(f"Incorrect. The answer is {answers_df.iloc[i, 0].strip().lower()}")
 	st.write(f"You scored {score}/{len(questions_df)}")
-	
+
+#def game_time(category):
 
 #define streamlit app
 def main():
