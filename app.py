@@ -28,8 +28,8 @@ def load_data(category):
 def randomize_data(data):
 	data = data.sample(frac=1).rset_index(drop=True)
 	for col in ["A", "B", "C", "D"]:
-		#data[col] = data[col].apply(lambda x: x.strip())
-		return data
+		data[col] = data[col].apply(lambda x: x.strip())
+	return data
 
 #define function to ask questions and check answers
 def ask_questions(category):
@@ -47,11 +47,11 @@ def ask_questions(category):
 		]
 		random.shuffle(choices)
 		for j, choice in enumerate(choices):
-			#st.write(f"{chr(ord('A')+j)}. {choice}")
+			st.write(f"{chr(ord('A')+j)}. {choice}")
 		user_answer = st.text_input("Your answer:")
 		if user_answer.strip().lower() == answers_df.iloc[i, 0].strip().lower():
-			#st.write("Correct!")
-			#score += 1
+			st.write("Correct!")
+			score += 1
 		else:
 			st.write(f"Incorrect. The answer is {answers_df.iloc[i, 0].strip().lower()}")
 	st.write(f"You scored {score}/{len(questions_df)}")
