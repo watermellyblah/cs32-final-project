@@ -14,9 +14,9 @@ category_files = {"Art History": ("art_questions.csv", "art_answers.csv"), "Harv
 #st.write('You selected:', topic_option)
 
 categories = {} #Create an empty dictionary
-for category, (questions_file, answers_file) in category_files.items():
-	questions_df = pd.read_csv(questions.file)
-	answers_df = pd.read_csv(answers.file)
+for category, (category_questions_file, category_answers_file) in category_files.items():
+	questions_df = pd.read_csv(category_questions.file)
+	answers_df = pd.read_csv(category_answers.file)
 	questions = questions_df["question"].tolist()
 	answers = answers_df["answer"].tolist()
 	categories[category] = [{"question": q, "answer": a} for q, a in zip(questions, answers)]
