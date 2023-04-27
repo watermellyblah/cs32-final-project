@@ -3,9 +3,9 @@ import random
 import streamlit as st
 import pandas as pd
 
-category_files = {{"category": "Art History"}: {"questions_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/art_questions.csv", "answers_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/art_answers.csv"}, 
-		  {"category": "Harvard"}: {"questions_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/harvard_questions.csv", "answers_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/harvard_answers.csv"}, 
-		  {"category": "Sports"}: {"questions_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/sports_questions.csv", "answers_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/sports_answers.csv"}
+category_files = {"Art History": {"questions_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/art_questions.csv", "answers_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/art_answers.csv"}, 
+		 "Harvard": {"questions_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/harvard_questions.csv", "answers_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/harvard_answers.csv"}, 
+		 "Sports": {"questions_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/sports_questions.csv", "answers_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/sports_answers.csv"}
 		 }
 
 #this ask for the input of the player to pick a topic
@@ -16,58 +16,54 @@ category_files = {{"category": "Art History"}: {"questions_url": "https://github
 
 #st.write('You selected:', topic_option)
 
-#define function to randomzie answer choices
-def random_answers(row):
-	answers = row.iloc[1:].tolist()
-	random.shuffle(answers)
-	return pd.Series(answers)
+#define fucntion to load questions and answers
+def load_data(category_files):
+	questions_url = category_files[category]["questions_url"]
+	answers_url = category_files[category]["answers_url"]
+	questions_df = pd.read_csv(questions_url)
+	answers_df = pd.read_csv(answers_url, header=None)
+	return questions_df, answers_df
+	
+#define function to randomize questions and answer choices
+def randomize_data(data):
+	data = data.sample(frac=1).rset_index(drop=True)
+	for col in ["A", "B", "C", "D"]:
+		data[col] = data[col].apply(lambda x: x.strip())
+	return data
 
-#define function to get answers from csv file and randomize
-def get_question_choices(df):
-	df = df.sample(frac-1).reset_index(drop=True)
-	for i in range(len(df)):
-		choices = df.loc[i, 'A':'D'].tolist()
+#define function to ask questions and check answers
+def ask_questions(category_files):
+	st.subheader(category_files)
+	questions_df, answers_df = load_data(category_files)
+	questions_df = randomzie_data(questions_df)
+	score = 0
+	for im row in questions_df.iterrows():
+		st.write(f"Question {i+1}: {row['Questions']}")
+		choices = [
+			row["A"],
+			row["B"],
+			row["C"],
+			row["D"]
+		]
 		random.shuffle(choices)
-		df.loc[i, 'A':'D'] = choices
-	return df
+		for j, choice in enumerate(choices):
+			st.write(f"{chr(ord('A')+j)}. {choice}")
+		user_answer = st.text_input("Your answer:")
+		if user_answer.strip().lower() == answers_df.iloc[i, 0].strip().lower():
+			st.write("Correct!"
+			score += 1
+		else:
+			st.write(f"Incorrect. The answer is {answers_df.iloc[i, 0].strip().lower()}")
+	st.write(f"You scored {score}/{len(questions_df)}")
 
-#define function to check user's answer
-def check_answer(user_answer, answer_key):
-	if user_answer.lower() == answer_key.lower():
-		return True
-	else:
-		return False
+#define streamlit app
+def main():
+    st.title("Trivia Game")
+    category = st.selectbox("Select a category:", list(categories.keys()))
+    ask_questions(category)
 
-st.write('Welcome to Trivia! Pick your category:')
-category = st.sidebar.selectbox('Select a Category', list(category_files.keys()))
-
-# load questions and answers
-questions_url = category_files[category]["question_url"]
-answers_url = category_files[category]["answer_url"]
-questions_df = pd.read_csv(questions_url)
-answers_df = pd.read_csv(answers_url, header=None)
-
-#randomize the order of questions and answers
-questions_df = questions_df.sample(frac=1).reset_index(drop=True)
-questions_df.iloc[:,1:] = questions_df.iloc[:, 1:].apply(random_answers, axis=1)
-
-#Loop through questions and have user answer each one
-number_correct = 0
-for i, row in questions_df.interrows():
-	st.write(f"Question {i+1}: {row['Questions']}")
-    	st.write(f"A. {row['Answer_1']}")
-    	st.write(f"B. {row['Answer_2']}")
-    	st.write(f"C. {row['Answer_3']}")
-    	st.write(f"D. {row['Answer_4']}")
-    	user_answer = st.text_input("Enter your answer:")
-    	if user_answer.lower() == str(answers_df.iloc[i, 0]).lower():
-        	st.write("Correct!")
-        	score += 1
-	else:
-		st.write(f"Sorry your answer is incorrect! The correct answer was {answers_df.iloc[i,0]}")
-
-
-
+if __name__ == "__main__":
+    main()
 
 #st.write('Welcome to Trivia! Pick your category:')
 #while true:
