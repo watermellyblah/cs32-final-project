@@ -29,7 +29,7 @@ def randomize_data(data):
 	data = data.sample(frac=1).rset_index(drop=True)
 	for col in ["A", "B", "C", "D"]:
 		#data[col] = data[col].apply(lambda x: x.strip())
-	return data
+		return data
 
 #define function to ask questions and check answers
 def ask_questions(category):
