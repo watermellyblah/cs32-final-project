@@ -45,7 +45,7 @@ questions_df.iloc[:,1:] = questions_df.iloc[:, 1:].apply(random_answers, axis=1)
 #Loop through questions and have user answer each one
 number_correct = 0
 for i, in row in questions_df.interrows():
-	st.write(f"Question {i+1}: {row['Questions]}")
+	st.write(f"Question {i+1}: {row['Questions']}")
 	st.write("Answer choices:")
     	st.write("A. " + row.iloc[1])
     	st.write("B. " + row.iloc[2])
