@@ -3,28 +3,40 @@ import random
 import streamlit as st
 import pandas as pd
 
+category_files = {"Art History": ("art_questions.csv", "art_answers.csv"), "Harvard": ("harvard_questions.csv", "harvard_answers.csv"), "Sports": ("sports_questions.csv", "sports_answers.csv")
+
 #this ask for the input of the player to pick a topic
 #def game_time():
   #need to print one question at a time from the list
   #need to use the radio button feature of streamlit
   #after pick answer, need to match answer into the answers csv
-  
 
-#def main():
+st.write('You selected:', topic_option)
+
+categories = {} #Create an empty dictionary
+for category, (questions_file, answers_file) in category_files.items():
+	questions_df = pd.read_csv(questions.file)
+	answers_df = pd.read_csv(answers.file)
+	questions = questions_df["question"].tolist()
+	answers = answers_df["answer"].tolist()
+	categories[category] = [{"question": q, "answer": a} for q, a in zip(questions, answers)]
+									
+#ask for the user to choose a category and display a random question from the selected category
 st.write('Welcome to Trivia! Pick your category:')
 #while true:
-topic_option = st.selectbox('Category',('Pick a Category','Art History','Harvard', 'Sports'))
-st.write('You selected:', topic_option)
-if topic_option == 'Art History':
-   pd.read_csv("art_questions.csv") 
-        #need to create a new function
-if topic_option == 'Harvard':
-  pd.read_csv("harvard_questions.csv") 
-        #need to create a new function
+category = st.selectbox('Category', list(categories.keys()))
+question = random.choice(categories[category])
+st.write(question["question"])
+
+#ask for user's answer and chheck if it's correct or not
+user_answer = st.text_input("Your Answer:")
+if user_answer.lower() == question["answer"].lower():
+	st.write("You are correct!")
 else:
-   pd.read_csv("sports_questions.csv") 
-        #need to create a new function
-  
+	st.write(f"You are incorrect! The correct answer is {question['answer']}.")
+
+
+
   #return main()
           
           #open sportsadfdhaoif
