@@ -4,7 +4,7 @@ import streamlit as st
 import pandas as pd
 
 def main():
-category_files = {"Art History": {"questions_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/art_questions.csv", "answers_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/art_answers.csv"}, 
+	category_files = {"Art History": {"questions_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/art_questions.csv", "answers_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/art_answers.csv"}, 
 		 "Harvard": {"questions_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/harvard_questions.csv", "answers_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/harvard_answers.csv"}, 
 		 "Sports": {"questions_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/sports_questions.csv", "answers_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/sports_answers.csv"}
 		 }
