@@ -3,7 +3,7 @@ import random
 import streamlit as st
 import pandas as pd
 
-category_files = {"Art History": ("art_questions.csv", "art_answers.csv"), "Harvard": ("harvard_questions.csv", "harvard_answers.csv"), "Sports": ("sports_questions.csv", "sports_answers.csv")}
+category_files = {"Art History": ("path/to/art_questions.csv", "path/to/art_answers.csv"), "Harvard": ("path/to/harvard_questions.csv", "path/to/harvard_answers.csv"), "Sports": ("path/to/sports_questions.csv", "path/to/sports_answers.csv")}
 
 #this ask for the input of the player to pick a topic
 #def game_time():
@@ -14,9 +14,9 @@ category_files = {"Art History": ("art_questions.csv", "art_answers.csv"), "Harv
 #st.write('You selected:', topic_option)
 
 categories = {} #Create an empty dictionary
-for category, (category_questions_file, category_answers_file) in category_files.items():
-	questions_df = pd.read_csv(category_questions.file)
-	answers_df = pd.read_csv(category_answers.file)
+for category, (questions_file, answers_file) in category_files.items():
+	questions_df = pd.read_csv(questions_file)
+	answers_df = pd.read_csv(answers_file)
 	questions = questions_df["question"].tolist()
 	answers = answers_df["answer"].tolist()
 	categories[category] = [{"question": q, "answer": a} for q, a in zip(questions, answers)]
@@ -35,7 +35,23 @@ if user_answer.lower() == question["answer"].lower():
 else:
 	st.write(f"You are incorrect! The correct answer is {question['answer']}.")
 
-
+#st.write('Welcome to Trivia! Pick your category:')
+#while true:
+#topic_option = st.selectbox('Category',('Pick a Category','Art History','Harvard', 'Sports'))
+#st.write('You selected:', topic_option)
+#if topic_option == 'Art History':
+   #open(art_questions.csv) 
+   #open(art_answers.csv)
+   #st.write(art_answers.csv)
+        #need to create a new function
+#if topic_option == 'Harvard':
+   #open(harvard_questions.csv)
+   #open(harvard_answers.csv)
+        #need to create a new function
+#else:
+   #open(sports_questions.csv)
+   #open(sports_answers.csv)
+        #need to create a new function
 
   #return main()
           
