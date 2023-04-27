@@ -11,7 +11,7 @@ category_files = {"Art History": ("art_questions.csv", "art_answers.csv"), "Harv
   #need to use the radio button feature of streamlit
   #after pick answer, need to match answer into the answers csv
 
-st.write('You selected:', topic_option)
+#st.write('You selected:', topic_option)
 
 categories = {} #Create an empty dictionary
 for category, (questions_file, answers_file) in category_files.items():
