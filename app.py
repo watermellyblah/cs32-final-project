@@ -55,13 +55,16 @@ def ask_questions(category):
 		else:
 			st.write(f"Incorrect. The answer is {answers_df.iloc[i, 0].strip().lower()}")
 	st.write(f"You scored {score}/{len(questions_df)}")
+	
 
 #define streamlit app
 def main():
 	st.title("Trivia Game")
 	category = st.selectbox("Select a category:", list(category_files.keys()))
 	st.write('You selected:', category)
-	ask_questions(category_files)
+	#ask_questions(category_files)
+	ask_questions(category)
+	
 
 if __name__ == "__main__":
 	main()
