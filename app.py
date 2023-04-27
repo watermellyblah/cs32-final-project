@@ -61,6 +61,7 @@ def main():
 	st.title("Trivia Game")
 	category = st.selectbox("Select a category:", list(category_files.keys()))
 	ask_questions(category_files)
+	st.write('You selected:', topic_option)
 
 if __name__ == "__main__":
 	main()
