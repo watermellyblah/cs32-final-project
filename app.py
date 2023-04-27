@@ -3,9 +3,9 @@ import random
 import streamlit as st
 import pandas as pd
 
-category_files = {"Art History": {"questions_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/art_questions.csv", "answers_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/art_answers.csv"}, 
-		  "Harvard": {"questions_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/harvard_questions.csv", "answers_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/harvard_answers.csv"}, 
-		  "Sports": {"questions_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/sports_questions.csv", "answers_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/sports_answers.csv"}
+category_files = {{"category": "Art History"}: {"questions_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/art_questions.csv", "answers_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/art_answers.csv"}, 
+		  {"category": "Harvard"}: {"questions_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/harvard_questions.csv", "answers_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/harvard_answers.csv"}, 
+		  {"category": "Sports"}: {"questions_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/sports_questions.csv", "answers_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/sports_answers.csv"}
 		 }
 
 #this ask for the input of the player to pick a topic
@@ -22,6 +22,15 @@ def random_answers(row):
 	random.shuffle(answers)
 	return pd.Series(answers)
 
+#define function to get answers from csv file and randomize
+def get_question_choices(df):
+	df = df.sample(frac-1).reset_index(drop=True)
+	for i in range(len(df)):
+		choices = df.loc[i, 'A':'D'].tolist()
+		random.shuffle(choices)
+		df.loc[i, 'A':'D'] = choices
+	return df
+
 #define function to check user's answer
 def check_answer(user_answer, answer_key):
 	if user_answer.lower() == answer_key.lower():
@@ -30,11 +39,11 @@ def check_answer(user_answer, answer_key):
 		return False
 
 st.write('Welcome to Trivia! Pick your category:')
-category = st.sidebar.selectbox('Select a Category', list(categories_dict.keys()))
+category = st.sidebar.selectbox('Select a Category', list(category_files.keys()))
 
 # load questions and answers
-questions_url = category_dict[category]["question_url"]
-answers_url = category_dict[category]["answer_url"]
+questions_url = category_files[category]["question_url"]
+answers_url = category_files[category]["answer_url"]
 questions_df = pd.read_csv(questions_url)
 answers_df = pd.read_csv(answers_url, header=None)
 
@@ -44,13 +53,18 @@ questions_df.iloc[:,1:] = questions_df.iloc[:, 1:].apply(random_answers, axis=1)
 
 #Loop through questions and have user answer each one
 number_correct = 0
-for i, in row in questions_df.interrows():
+for i, row in questions_df.interrows():
 	st.write(f"Question {i+1}: {row['Questions']}")
-	st.write("Answer choices:")
-    	st.write("A. " + row.iloc[1])
-    	st.write("B. " + row.iloc[2])
-   	st.write("C. " + row.iloc[3])
-    	st.write("D. " + row.iloc[4])
+    	st.write(f"A. {row['Answer_1']}")
+    	st.write(f"B. {row['Answer_2']}")
+    	st.write(f"C. {row['Answer_3']}")
+    	st.write(f"D. {row['Answer_4']}")
+    	user_answer = st.text_input("Enter your answer:")
+    	if user_answer.lower() == str(answers_df.iloc[i, 0]).lower():
+        	st.write("Correct!")
+        	score += 1
+	else:
+		st.write(f"Sorry your answer is incorrect! The correct answer was {answers_df.iloc[i,0]}")
 
 
 
