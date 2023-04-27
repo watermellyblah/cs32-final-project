@@ -16,7 +16,7 @@ category_files = {"Art History": {"questions_url": "https://github.com/watermell
 
 #st.write('You selected:', topic_option)
 
-pd.read_csv(https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/art_questions.csv) 
+pd.read_csv("https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/art_questions.csv") 
 
 questions_df = pd.read_csv(questions_url)
 category_questions_df = questions_df.loc[questions_df['Category'] == selected_category]
