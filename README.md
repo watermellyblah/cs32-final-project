@@ -38,3 +38,13 @@ The steps we need to take to make this FP possible:
 2. We need to see how we can use a key within a dictionary to find the answer choices to the questions and then print out the corresponding answer choices to the randomly selected quesiton.
 3. We also need to have different CSV files with different genres, and then have the player be asked to input and using the "radio" widget in Streamlit to pick the topic which pickes the CSV file.
 4. Then we need to make sure that the code will not pick the same question, so we need to somehow take it away from the ones we can choose.
+
+Steps to run the app:
+1. open codespace
+2. download the necessary packages into your codespace
+   install python! 
+   in the terminal type: 
+   install streamlit!
+   in the terminal type: pip install streamlit
+   to check if it has been installed run: streamlit hello --server.enableCORS false --server.enableXsrfProtection false
+   
