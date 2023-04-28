@@ -5,10 +5,20 @@ import pandas as pd
 
 ###
 
-category_files = {"Art History": {"questions_url": "questions_csv/art_questions.csv", "answers_url": "answers_csv/art_answers.csv"}, 
-		 "Harvard": {"questions_url": "questions_csv/harvard_questions.csv", "answers_url": "answers_csv/harvard_answers.csv"}, 
-		 "Sports": {"questions_url": "questions_csv/sports_questions.csv", "answers_url": "answers_csv/sports_answers.csv"}
-		 }
+print("hello")
+
+category_files = {
+	"Art History": {
+		"questions_url": "questions_csv/art_questions.csv", 
+		"answers_url": "answers_csv/art_answers.csv"
+	}, 
+	"Harvard": {
+		"questions_url": "questions_csv/harvard_questions.csv", 
+		"answers_url": "answers_csv/harvard_answers.csv"}, 
+	"Sports": {
+		"questions_url": "questions_csv/sports_questions.csv", 
+		"answers_url": "answers_csv/sports_answers.csv"}
+}
 
 #this ask for the input of the player to pick a topic
   #need to print one question at a time from the list
@@ -27,6 +37,7 @@ def load_data(category):
 	
 #define function to randomize questions and answer choices
 def randomize_data(data):
+	""" """
 	data = data.sample(frac=1).rset_index(drop=True)
 	for col in ["A", "B", "C", "D"]:
 		data[col] = data[col].apply(lambda x: x.strip())
@@ -34,6 +45,7 @@ def randomize_data(data):
 
 #define function to ask questions and check answers
 def ask_questions(category):
+	""" """
 	st.subheader(category)
 	questions_df, answers_df = load_data(category)
 	questions_df = randomize_data(questions_df)
