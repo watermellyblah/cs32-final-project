@@ -5,7 +5,7 @@ import pandas as pd
 
 ###
 
-print("hello")
+#print("hello")
 
 category_files = {
 	"Art History": {
@@ -34,9 +34,10 @@ def load_data(category):
 	questions_df = pd.read_csv(questions_url)
 	answers_df = pd.read_csv(answers_url, header=None)
 	return questions_df, answers_df
+
 	
 #define function to randomize questions and answer choices
-def randomize_data(data):
+#def randomize_data(data):
 	""" """
 	data = data.sample(frac=1).rset_index(drop=True)
 	for col in ["A", "B", "C", "D"]:
@@ -48,7 +49,8 @@ def ask_questions(category):
 	""" """
 	st.subheader(category)
 	questions_df, answers_df = load_data(category)
-	questions_df = randomize_data(questions_df)
+	
+	#questions_df = randomize_data(questions_df)
 	score = 0
 	for i, row in questions_df.iterrows():
 		st.write(f"Question {i+1}: {row['Questions']}")
@@ -61,14 +63,15 @@ def ask_questions(category):
 		random.shuffle(choices)
 		for j, choice in enumerate(choices):
 			st.write(f"{chr(ord('A')+j)}. {choice}")
-			
-		user_answer = st.text_input("Your answer:")
-		if user_answer.strip().lower() == answers_df.iloc[i, 0].strip().lower():
+		user_answer = st.text_input("Your answer:", key = i)
+		actual_answer = "27" #need to pull actual answer from csv file using pandas framework
+		if user_answer.strip().lower() == actual_answer:
 			st.write("Correct!")
 			score += 1
-		else:
-			st.write(f"Incorrect. The answer is {answers_df.iloc[i, 0].strip().lower()}")
+		#else:
+			#st.write(f"Incorrect. The answer is {answers_df.iloc[i+1, 0].strip().lower()}")
 	st.write(f"You scored {score}/{len(questions_df)}")
+
 
 #def game_time(category):
 
@@ -79,6 +82,7 @@ def main():
 	st.write('You selected:', category)
 	#ask_questions(category_files)
 	ask_questions(category)
+	
 	
 
 if __name__ == "__main__":
