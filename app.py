@@ -65,7 +65,16 @@ def ask_questions(category):
 		]
 		user_answer=st.radio(f"Question {i+1}: {row['Questions']}", choices)
 		st. write('You Chose:',user_answer)
-		
+		#actual_answer = answers_df[i+1:]
+		answer = category_files[category]["answers_url"]
+		actual_answer = []
+		with open(answer, encoding="utf-8") as f:
+			reader = csv.DictReader(f)
+			for row in reader:
+				actual_answer.append(row['Correct'])
+
+		if user_answer == actual_answer[i]:
+			st.write("Correct")
 		#randomize choices
 		#random.shuffle(choices)
 		#for j, choice in enumerate(choices):
@@ -73,7 +82,7 @@ def ask_questions(category):
 			#st.write(f"{chr(ord('A')+j)}. {choice}")
 		#input answer
 		#user_answer = st.text_input("Your answer:", key = i)
-		actual_answer = "27" #need to pull actual answer from csv file using pandas framework
+		#actual_answer = "27" #need to pull actual answer from csv file using pandas framework
 		#check answer to answer key
 		#if user_answer.strip().lower() == actual_answer:
 			#st.write("Correct!")
