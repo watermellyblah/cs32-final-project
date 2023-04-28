@@ -69,6 +69,7 @@ def ask_questions(category):
 			row["C"],
 			row["D"]
 		]
+		#answer_choices = questions_df.choices(frac=0.5)
 		user_answer=st.radio(f"Question {i+1}: {row['Questions']}", choices)
 		st. write('You Chose:',user_answer)
 		#actual_answer = answers_df[i+1:]
