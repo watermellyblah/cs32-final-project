@@ -47,11 +47,14 @@ def load_data(category):
 #define function to ask questions and check answers
 def ask_questions(category):
 	""" """
+	#Pull questions/answers
 	st.subheader(category)
 	questions_df, answers_df = load_data(category)
 	
 	#questions_df = randomize_data(questions_df)
+	#start counter
 	score = 0
+	#basically formatted as a matrix to display the questions along with the multiple choices
 	for i, row in questions_df.iterrows():
 		st.write(f"Question {i+1}: {row['Questions']}")
 		choices = [
@@ -60,11 +63,15 @@ def ask_questions(category):
 			row["C"],
 			row["D"]
 		]
+		#randomize choices
 		random.shuffle(choices)
 		for j, choice in enumerate(choices):
+			#returns unicode code of a specified character and then returns the character that corresponds to specified unicdeo (A incremented by j, index of answer choice).. then made into f-string
 			st.write(f"{chr(ord('A')+j)}. {choice}")
+		#input answer
 		user_answer = st.text_input("Your answer:", key = i)
 		actual_answer = "27" #need to pull actual answer from csv file using pandas framework
+		#check answer to answer key
 		if user_answer.strip().lower() == actual_answer:
 			st.write("Correct!")
 			score += 1
