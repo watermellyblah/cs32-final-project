@@ -32,8 +32,14 @@ def load_data(category):
 	questions_url = category_files[category]["questions_url"]
 	answers_url = category_files[category]["answers_url"]
 	questions_df = pd.read_csv(questions_url)
-	answers_df = pd.read_csv(answers_url, header=None)
-	return questions_df, answers_df
+	#answers_df = pd.read_csv(answers_url, header=None)
+	answer = category_files[category]["answers_url"]
+	actual_answers = []
+	with open(answer, encoding="utf-8-sig") as f:
+		reader = csv.DictReader(f)
+		for row in reader:
+			actual_answers.append(row['Correct'])
+	return questions_df, actual_answers
 
 	
 #define function to randomize questions and answer choices
@@ -49,7 +55,7 @@ def ask_questions(category):
 	""" """
 	#Pull questions/answers
 	st.subheader(category)
-	questions_df, answers_df = load_data(category)
+	questions_df, actual_answers = load_data(category)
 	
 	#questions_df = randomize_data(questions_df)
 	#start counter
@@ -66,15 +72,11 @@ def ask_questions(category):
 		user_answer=st.radio(f"Question {i+1}: {row['Questions']}", choices)
 		st. write('You Chose:',user_answer)
 		#actual_answer = answers_df[i+1:]
-		answer = category_files[category]["answers_url"]
-		actual_answer = []
-		with open(answer, encoding="utf-8") as f:
-			reader = csv.DictReader(f)
-			for row in reader:
-				actual_answer.append(row['Correct'])
-
-		if user_answer == actual_answer[i]:
+		if user_answer == actual_answers[i]:
 			st.write("Correct")
+			score += 1
+		
+		
 		#randomize choices
 		#random.shuffle(choices)
 		#for j, choice in enumerate(choices):
@@ -86,7 +88,7 @@ def ask_questions(category):
 		#check answer to answer key
 		#if user_answer.strip().lower() == actual_answer:
 			#st.write("Correct!")
-	score += 1
+	#score += 1
 		#else:
 			#st.write(f"Incorrect. The answer is {answers_df.iloc[i+1, 0].strip().lower()}")
 	st.write(f"You scored {score}/{len(questions_df)}")
