@@ -5,9 +5,9 @@ import pandas as pd
 
 ###
 
-category_files = {"Art History": {"questions_url": "/questions_csv/art_questions.csv", "answers_url": "/answers_csv/art_answers.csv"}, 
-		 "Harvard": {"questions_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/harvard_questions.csv", "answers_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/harvard_answers.csv"}, 
-		 "Sports": {"questions_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/questions_csv/sports_questions.csv", "answers_url": "https://github.com/watermellyblah/cs32-final-project/blob/main/answers_csv/sports_answers.csv"}
+category_files = {"Art History": {"questions_url": "questions_csv/art_questions.csv", "answers_url": "answers_csv/art_answers.csv"}, 
+		 "Harvard": {"questions_url": "questions_csv/harvard_questions.csv", "answers_url": "answers_csv/harvard_answers.csv"}, 
+		 "Sports": {"questions_url": "questions_csv/sports_questions.csv", "answers_url": "answers_csv/sports_answers.csv"}
 		 }
 
 #this ask for the input of the player to pick a topic
@@ -36,7 +36,7 @@ def randomize_data(data):
 def ask_questions(category):
 	st.subheader(category)
 	questions_df, answers_df = load_data(category)
-	questions_df = randomzie_data(questions_df)
+	questions_df = randomize_data(questions_df)
 	score = 0
 	for i, row in questions_df.iterrows():
 		st.write(f"Question {i+1}: {row['Questions']}")
