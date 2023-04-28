@@ -75,6 +75,8 @@ def ask_questions(category):
 		if user_answer == actual_answers[i]:
 			st.write("Correct")
 			score += 1
+		else:
+			st.write("Incorrect")
 		
 		
 		#randomize choices
