@@ -63,19 +63,21 @@ def ask_questions(category):
 			row["C"],
 			row["D"]
 		]
-		st.radio(f"Question {i+1}: {row['Questions']}", choices)
+		user_answer=st.radio(f"Question {i+1}: {row['Questions']}", choices)
+		st. write('You Chose:',user_answer)
+		
 		#randomize choices
 		#random.shuffle(choices)
 		#for j, choice in enumerate(choices):
 			#returns unicode code of a specified character and then returns the character that corresponds to specified unicdeo (A incremented by j, index of answer choice).. then made into f-string
 			#st.write(f"{chr(ord('A')+j)}. {choice}")
 		#input answer
-		user_answer = st.text_input("Your answer:", key = i)
+		#user_answer = st.text_input("Your answer:", key = i)
 		actual_answer = "27" #need to pull actual answer from csv file using pandas framework
 		#check answer to answer key
-		if user_answer.strip().lower() == actual_answer:
-			st.write("Correct!")
-			score += 1
+		#if user_answer.strip().lower() == actual_answer:
+			#st.write("Correct!")
+	score += 1
 		#else:
 			#st.write(f"Incorrect. The answer is {answers_df.iloc[i+1, 0].strip().lower()}")
 	st.write(f"You scored {score}/{len(questions_df)}")
