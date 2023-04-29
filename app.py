@@ -95,7 +95,7 @@ def ask_questions(category):
 	#score += 1
 		#else:
 			#st.write(f"Incorrect. The answer is {answers_df.iloc[i+1, 0].strip().lower()}")
-	st.write(f"You scored {score}/{len(questions_df)}")
+	st.write(f"You scored: {score}/{len(questions_df)} Congratulations!")
 
 
 #def game_time(category):
