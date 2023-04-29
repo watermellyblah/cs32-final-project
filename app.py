@@ -7,8 +7,7 @@ import pandas as pd
 category_files = {
 	"Art History": {
 		"questions_url": "questions_csv/art_questions.csv", 
-		"answers_url": "answers_csv/art_answers.csv"
-	}, 
+		"answers_url": "answers_csv/art_answers.csv"}, 
 	"Harvard": {
 		"questions_url": "questions_csv/harvard_questions.csv", 
 		"answers_url": "answers_csv/harvard_answers.csv"}, 
