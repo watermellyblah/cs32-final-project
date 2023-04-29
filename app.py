@@ -2,6 +2,7 @@ import csv
 import random
 import streamlit as st
 import pandas as pd
+from PIL import Image
 
 
 category_files = {
@@ -98,6 +99,9 @@ def ask_questions(category):
 #define streamlit app
 def main():
 	st.title("Trivia Game")
+	trivia_logo = Image.open("trivia.jpeg")
+	st.image(trivia_logo)
+	st.write("Instructions: Pick a category ")
 	category = st.selectbox("Select a category:", list(category_files.keys()))
 	st.write('You selected:', category)
 	#if user_selected_category == "Please Select a Trivia Topic":
