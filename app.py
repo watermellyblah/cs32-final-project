@@ -101,7 +101,7 @@ def main():
 	st.title("Trivia Game")
 	trivia_logo = Image.open("trivia.jpeg")
 	st.image(trivia_logo)
-	st.write("Instructions: Pick a category ")
+	st.write("Instructions: Pick a category and answer the questions! Get ready to test your knowledge!")
 	category = st.selectbox("Select a category:", list(category_files.keys()))
 	st.write('You selected:', category)
 	#if user_selected_category == "Please Select a Trivia Topic":
