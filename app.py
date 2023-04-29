@@ -64,6 +64,7 @@ def ask_questions(category):
 	for i, row in questions_df.iterrows():
 		#st.radio(f"Question {i+1}: {row['Questions']}",)
 		choices = [
+			"None",
 			row["A"],
 			row["B"],
 			row["C"],
