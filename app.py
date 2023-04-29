@@ -3,9 +3,6 @@ import random
 import streamlit as st
 import pandas as pd
 
-###
-
-#print("hello")
 
 category_files = {
 	"Art History": {
@@ -25,7 +22,6 @@ category_files = {
   #need to use the radio button feature of streamlit
   #after pick answer, need to match answer into the answers csv
 
-#st.write('You selected:', topic_option)
 
 #define fucntion to load questions and answers using pandas
 def load_data(category):
