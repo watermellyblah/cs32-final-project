@@ -35,7 +35,7 @@ def load_data(category):
 	answers_url = category_files[category]["answers_url"]
 	questions_df = pd.read_csv(questions_url)
 	answer_choices = ["A", "B", "C", "D"]
-    	questions_df["Answer"] = questions_df.apply(lambda x: random.sample(answer_choices, len(answer_choices)), axis=1)
+	questions_df["Answer"] = questions_df.apply(lambda x: random.sample(answer_choices, len(answer_choices)), axis=1)
 	#answers_df = pd.read_csv(answers_url, header=None)
 	answer = category_files[category]["answers_url"]
 	actual_answers = []
