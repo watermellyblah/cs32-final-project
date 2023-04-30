@@ -77,7 +77,7 @@ def ask_questions(category):
 	#basically formatted as a matrix to display the questions along with the multiple choices
 	for i, row in questions_df.iterrows():
 		#st.radio(f"Question {i+1}: {row['Questions']}",)
-		st.write(row['Question'])
+		st.write(row['Questions'])
 		st.write("A. ", row['Answer'][0])
 		st.write("B. ", row['Answer'][1])
 		st.write("C. ", row['Answer'][2])
