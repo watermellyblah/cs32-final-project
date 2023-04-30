@@ -37,7 +37,7 @@ def load_questions(category):
 @st.cache_data
 def load_answers(category):
 	answer = category_files[category]["answers_url"]
-	answer_answers = []
+	actual_answers = []
 	with open(answer, encoding="utf-8-sig") as f:
 		reader = csv.DictReader(f)
 		for row in reader:
