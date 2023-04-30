@@ -58,7 +58,7 @@ def randomize_answer_choices(questions_df):
         random.shuffle(choices)
 	#making last choice to be none
         choices.append("None")
-        questions_df["answer_choices"][question_idx] = choices
+        questions_df.loc["answer_choices"][question_idx] = choices
     return questions_df
 
 # define function to ask questions and check answers
