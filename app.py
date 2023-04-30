@@ -78,10 +78,10 @@ def ask_questions(category):
 	for i, row in questions_df.iterrows():
 		#st.radio(f"Question {i+1}: {row['Questions']}",)
 		st.write(row['Question'])
-        	st.write("A. ", row['Answer'][0])
+		st.write("A. ", row['Answer'][0])
 		st.write("B. ", row['Answer'][1])
-        	st.write("C. ", row['Answer'][2])
-        	st.write("D. ", row['Answer'][3])
+		st.write("C. ", row['Answer'][2])
+		st.write("D. ", row['Answer'][3])
 		
 		#answer_choices = questions_df.choices(frac=0.5)
 		user_answer=st.radio(f"Question {i+1}: {row['Questions']}", ('A', 'B', 'C', 'D'))
