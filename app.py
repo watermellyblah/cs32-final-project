@@ -34,8 +34,8 @@ def load_data(category):
 	questions_url = category_files[category]["questions_url"]
 	answers_url = category_files[category]["answers_url"]
 	questions_df = pd.read_csv(questions_url)
-	answer_choices = ["A", "B", "C", "D"]
-	questions_df["Answer"] = questions_df.apply(lambda x: random.sample(answer_choices, len(answer_choices)), axis=1)
+	#answer_choices = ["A", "B", "C", "D"]
+	#questions_df["Answer"] = questions_df.apply(lambda x: random.sample(answer_choices, len(answer_choices)), axis=1)
 	#answers_df = pd.read_csv(answers_url, header=None)
 	answer = category_files[category]["answers_url"]
 	actual_answers = []
@@ -80,6 +80,8 @@ def ask_questions(category):
 			row["C"],
 			row["D"]
 		]
+		random.shuffle(choices)
+		
 		#answer_choices = questions_df.choices(frac=0.5)
 		user_answer=st.radio(f"Question {i+1}: {row['Questions']}", choices)
 		st. write('You Chose:',user_answer)
