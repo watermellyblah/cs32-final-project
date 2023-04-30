@@ -15,6 +15,12 @@ category_files = {
 	"Sports": {
 		"questions_url": "questions_csv/sports_questions.csv", 
 		"answers_url": "answers_csv/sports_answers.csv"}
+	"Geography": {
+		"questions_url": "questions_csv/geography_questions.csv", 
+		"answers_url": "answers_csv/geography_answers.csv"}
+	"Disney": {
+		"questions_url": "questions_csv/disney_questions.csv", 
+		"answers_url": "answers_csv/disney_answers.csv"}
 }
 
 #this ask for the input of the player to pick a topic
