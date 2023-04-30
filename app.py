@@ -70,6 +70,7 @@ def ask_questions(category):
 	#questions_df = randomize_data(questions_df)
 	#start counter
 	score = 0
+	shuffled = False
 	#basically formatted as a matrix to display the questions along with the multiple choices
 	for i, row in questions_df.iterrows():
 		#st.radio(f"Question {i+1}: {row['Questions']}",)
@@ -80,8 +81,6 @@ def ask_questions(category):
 			row["C"],
 			row["D"]
 		]
-		
-		shuffled = False
 		
 		if not shuffled:
 			random.shuffle(choices)
