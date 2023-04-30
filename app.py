@@ -34,8 +34,8 @@ def load_data(category):
 	questions_url = category_files[category]["questions_url"]
 	answers_url = category_files[category]["answers_url"]
 	questions_df = pd.read_csv(questions_url)
-	#answer_choices = ["A", "B", "C", "D"]
-	#questions_df["Answer"] = questions_df.apply(lambda x: random.sample(answer_choices, len(answer_choices)), axis=1)
+	answer_choices = ["A", "B", "C", "D"]
+	questions_df["Answer"] = questions_df.apply(lambda x: random.sample(answer_choices, len(answer_choices)), axis=1)
 	#answers_df = pd.read_csv(answers_url, header=None)
 	answer = category_files[category]["answers_url"]
 	actual_answers = []
@@ -53,12 +53,12 @@ def load_data(category):
 	#for col in ["A", "B", "C", "D"]:
 		#data[col] = data[col].apply(lambda x: x.strip())
 	#return data
-def randomize_answer_choices(questions_df):
-    answer_choices = [
-        random.sample([row["A"], row["B"], row["C"], row["D"]], 4)
-        for _, row in questions_df.iterrows()
-    ]
-    return answer_choices
+#def randomize_answer_choices(questions_df):
+    #answer_choices = [
+        #random.sample([row["A"], row["B"], row["C"], row["D"]], 4)
+        #for _, row in questions_df.iterrows()
+    #]
+    #return answer_choices
 
 #define function to ask questions and check answers
 def ask_questions(category):
@@ -70,7 +70,10 @@ def ask_questions(category):
 	#questions_df = randomize_data(questions_df)
 	#start counter
 	score = 0
-	shuffled = False
+	#shuffled = False	
+	#f not shuffled:
+		#random.shuffle(choices)
+		#shuffled = True
 	#basically formatted as a matrix to display the questions along with the multiple choices
 	for i, row in questions_df.iterrows():
 		#st.radio(f"Question {i+1}: {row['Questions']}",)
@@ -81,10 +84,6 @@ def ask_questions(category):
 			row["C"],
 			row["D"]
 		]
-		
-		if not shuffled:
-			random.shuffle(choices)
-			shuffled = True
 		
 		#answer_choices = questions_df.choices(frac=0.5)
 		user_answer=st.radio(f"Question {i+1}: {row['Questions']}", choices)
