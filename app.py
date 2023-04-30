@@ -34,14 +34,14 @@ def load_data(category):
 	questions_url = category_files[category]["questions_url"]
 	answers_url = category_files[category]["answers_url"]
 	questions_df = pd.read_csv(questions_url)
+	answer_choices = ["A", "B", "C", "D"]
+    	questions_df["Answer"] = questions_df.apply(lambda x: random.sample(answer_choices, len(answer_choices)), axis=1)
 	#answers_df = pd.read_csv(answers_url, header=None)
 	answer = category_files[category]["answers_url"]
 	actual_answers = []
 	with open(answer, encoding="utf-8-sig") as f:
 		reader = csv.DictReader(f)
 		for row in reader:
-			answer_choices = [row['A'], row['B'], row['C'], row['D']]
-			shuffled_choices = random.sample(answer_choices, len(answer_choices))
 			actual_answers.append(row['Correct'])
 	return questions_df, actual_answers
 
