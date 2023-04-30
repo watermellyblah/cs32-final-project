@@ -80,7 +80,12 @@ def ask_questions(category):
 			row["C"],
 			row["D"]
 		]
-		random.shuffle(choices)
+		
+		shuffled = False
+		
+		if not shuffled:
+			random.shuffle(choices)
+			shuffled = True
 		
 		#answer_choices = questions_df.choices(frac=0.5)
 		user_answer=st.radio(f"Question {i+1}: {row['Questions']}", choices)
