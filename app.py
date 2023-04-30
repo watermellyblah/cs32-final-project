@@ -31,7 +31,7 @@ def load_questions(category):
 	questions = category_files[category]["questions_url"]
 	colnames = ["question", "answer_A", "answer_B", "answer_C", "answer_D"]
 	questions_df = pd.read_csv(questions, names=colnames, skiprows=1) #first row is naming the columns
-	questions_df = randomize_answer_choice(questions_df)
+	questions_df = randomize_answer_choices(questions_df)
 	return questions_df
 
 @st.cache_data
