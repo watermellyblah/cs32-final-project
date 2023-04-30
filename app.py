@@ -77,16 +77,14 @@ def ask_questions(category):
 	#basically formatted as a matrix to display the questions along with the multiple choices
 	for i, row in questions_df.iterrows():
 		#st.radio(f"Question {i+1}: {row['Questions']}",)
-		choices = [
-			"None",
-			row["A"],
-			row["B"],
-			row["C"],
-			row["D"]
-		]
+		st.write(row['Question'])
+        	st.write("A. ", row['Answer'][0])
+		st.write("B. ", row['Answer'][1])
+        	st.write("C. ", row['Answer'][2])
+        	st.write("D. ", row['Answer'][3])
 		
 		#answer_choices = questions_df.choices(frac=0.5)
-		user_answer=st.radio(f"Question {i+1}: {row['Questions']}", choices)
+		user_answer=st.radio(f"Question {i+1}: {row['Questions']}", ('A', 'B', 'C', 'D'))
 		st. write('You Chose:',user_answer)
 		#actual_answer = answers_df[i+1:]
 		if user_answer == actual_answers[i]:
