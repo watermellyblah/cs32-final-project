@@ -40,6 +40,8 @@ def load_data(category):
 	with open(answer, encoding="utf-8-sig") as f:
 		reader = csv.DictReader(f)
 		for row in reader:
+			answer_choices = [row['A'], row['B'], row['C'], row['D']]
+			shuffled_choices = random.sample(answer_choices, len(answer_choices))
 			actual_answers.append(row['Correct'])
 	return questions_df, actual_answers
 
@@ -47,10 +49,16 @@ def load_data(category):
 #define function to randomize questions and answer choices
 #def randomize_data(data):
 	""" """
-	data = data.sample(frac=1).rset_index(drop=True)
-	for col in ["A", "B", "C", "D"]:
-		data[col] = data[col].apply(lambda x: x.strip())
-	return data
+	#data = data.sample(frac=1).rset_index(drop=True)
+	#for col in ["A", "B", "C", "D"]:
+		#data[col] = data[col].apply(lambda x: x.strip())
+	#return data
+def randomize_answer_choices(questions_df):
+    answer_choices = [
+        random.sample([row["A"], row["B"], row["C"], row["D"]], 4)
+        for _, row in questions_df.iterrows()
+    ]
+    return answer_choices
 
 #define function to ask questions and check answers
 def ask_questions(category):
