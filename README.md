@@ -52,3 +52,4 @@ Steps to run the app and play the game:
    in the terminal type: pip install streamlit
    to check if it has been installed run: streamlit hello --server.enableCORS false --server.enableXsrfProtection false
    to run the app: streamlit run app.py  --server.enableCORS false --server.enableXsrfProtection false
+   install extras: pip install streamlit-extras
