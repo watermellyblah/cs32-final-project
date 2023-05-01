@@ -46,10 +46,11 @@ Using Streamlit as our output, we are going to us Streamlit to create a user fri
 Steps to run the app and play the game:
 1. open codespace in GitHub
 2. download the necessary packages into your codespace
-   install python! 
-   in the terminal type: 
-   install streamlit!
-   in the terminal type: pip install streamlit
-   to check if it has been installed run: streamlit hello --server.enableCORS false --server.enableXsrfProtection false
-   to run the app: streamlit run app.py  --server.enableCORS false --server.enableXsrfProtection false
-   install extras: pip install streamlit-extras
+3. install python! Go to the search and search python and press install
+4. Check the version: in the terminal type: python3 -- version
+5. install pandas: type in the terminal: pip install pandas
+6. install streamlit! in the terminal type: pip install streamlit
+7. to check if it has been installed run: streamlit hello --server.enableCORS false --server.enableXsrfProtection false
+8. to run the app: streamlit run app.py  --server.enableCORS false --server.enableXsrfProtection false
+9. Now the app should be running in the browser in a new tab.
+  
