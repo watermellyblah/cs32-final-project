@@ -104,7 +104,7 @@ def main():
         score = ask_questions(questions_df, answers_df)
         st.form_submit_button(label="Submit choice")
         st.write(f"You scored: {score}/{len(questions_df)} Congratulations!")
-	rain(emoji="🎉",font_size=54,falling_speed=5,animation_length="5",)
+        rain(emoji="🎉",font_size=54,falling_speed=5,animation_length="5",)
 
 
 if __name__ == "__main__":
